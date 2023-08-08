@@ -1,0 +1,63 @@
+<div id="bookdetails">
+  <section class="h-full justify-center space-y-3  bg-gray-900 text-white flex flex-col py-10 px-24">
+    <h1 class="text-center text-2xl">Book Details</h1>
+    <!-- <a class="w-fit ml-auto" routerLink="#addbook"> -->
+    <button (click)="toAddPerson()"
+      class="hover:scale-95 w-fit ml-auto px-5 py-2 rounded bg-slate-500 hover:bg-slate-400">
+      Add Person
+    </button>
+    <!-- </a> -->
+    <table class="table border-collapse text-center border rounded border-slate-500 w-full h-fit">
+      <thead>
+        <tr>
+          <th *ngFor="let header of headers" class="border border-slate-600 p-3 bg-slate-500">
+            {{ header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of data" class="border border-collapse border-slate-600 odd:bg-gray-900 even:bg-gray-800">
+          <td>{{ d.id }}</td>
+          <td>{{ d.name }}</td>
+          <td>{{ d.age }}</td>
+          <td>{{ d.gender }}</td>
+
+          <td class="flex justify-center items-center space-x-3 p-5 gap-2">
+            <button (click)="editPerson(d)" class="bg-blue-500 hover:bg-blue-400 rounded-full p-2">
+              Edit
+            </button>
+            <button (click)="deletePerson(d.id)" class="bg-red-500 hover:bg-red-400 rounded-full p-2">
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+
+<!-- Add book -->
+
+<div id="addbook" class="w-full h-screen bg-gray-900 text-white ">
+  <section class="flex justify-center items-center ">
+    <form (ngSubmit)="savePerson()" class="flex flex-col justify-center items-center p-20 gap-3">
+      <input #nameInput required type="text" placeholder="Enter Name.." name="form.name"
+        class="w-96 placeholder:italic bg-transparent p-2 border rounded " [(ngModel)]="form.name" />
+
+      <input #ageInput required placeholder="Enter Age" name="form.age"
+        class="w-96 placeholder:italic bg-transparent p-2 border rounded" [(ngModel)]="form.age" />
+
+      <input #genderInput required type="text" placeholder="Gender" name="form.gender"
+        class="w-96 placeholder:italic bg-transparent p-2 border rounded" [(ngModel)]="form.gender" />
+
+
+      <button class="px-5 py-2 bg-slate rounded bg-slate-500 hover:bg-slate-400 hover:scale-95 ">
+        Save
+      </button>
+      <!-- <button (click)="toBookDetails()" class="px-5 py-2 bg-slate rounded bg-slate-500 hover:bg-slate-400 ">
+        Save
+      </button> -->
+    </form>
+
+  </section>
+</div>
